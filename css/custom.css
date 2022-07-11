@@ -1,0 +1,30 @@
+
+/* custom */
+
+/* bg color */
+
+.bg-gradient {
+    background: #f8f9fa !important;
+}
+
+/* bouton */
+.btn {
+    box-shadow: 0 4px 6px rgba(248, 249, 250,.11), 0 1px 3px rgba(0,0,0,.08);
+}
+
+
+.btn:active .btn:focus .btn:focus {
+    box-shadow: none !important;
+}
+
+.nav-btn {
+    margin-right: 10px;
+}
+
+ul {
+    list-style: none;
+}
+
+.item-arrow {
+    
+}
