@@ -66,9 +66,20 @@
 
         <script>
         async function loadMarkdown(targetId, filePath) {
-        const res = await fetch(filePath);
-        const md = await res.text();
-        document.getElementById(targetId).innerHTML = marked.parse(md);
+            const res = await fetch(filePath);
+            let md = await res.text();
+
+            // derive base folder from file path
+            const base = filePath.substring(0, filePath.lastIndexOf("/") + 1);
+
+            // rewrite relative image paths
+            md = md.replace(/!\[(.*?)\]\((?!https?:\/\/)(.*?)\)/g,
+                (match, alt, src) => {
+                return `![${alt}](${base}${src})`;
+                });
+
+            document.getElementById(targetId).innerHTML =
+                marked.parse(md);
         }
 
         // load all docs
