@@ -50,20 +50,32 @@
         </div>
 
 
-        <div id="file1" style="display:block;">
-            {% capture md1 %}{% include_relative pogobot/docs/SoftwareUserGuide.md %}{% endcapture %}
-            {{ md1 | markdownify }}
+        <div id="file1" style="display:block; width:100%; height:auto;">
+        <div id="md1"></div>
         </div>
 
-        <div id="file2" style="display:none;">
-            {% capture md2 %}{% include_relative pogobot/docs/RobotAssembly.md %}{% endcapture %}
-            {{ md2 | markdownify }}
+        <div id="file2" style="display:none; width:100%; height:auto;">
+        <div id="md2"></div>
         </div>
 
-        <div id="file3" style="display:none;">
-            {% capture md3 %}{% include_relative pogobot/docs/IR-Remote.md %}{% endcapture %}
-            {{ md3 | markdownify }}
+        <div id="file3" style="display:none; width:100%; height:auto;">
+        <div id="md3"></div>
         </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+        <script>
+        async function loadMarkdown(targetId, filePath) {
+        const res = await fetch(filePath);
+        const md = await res.text();
+        document.getElementById(targetId).innerHTML = marked.parse(md);
+        }
+
+        // load all docs
+        loadMarkdown("md1", "pogobot/docs/SoftwareUserGuide.md");
+        loadMarkdown("md2", "pogobot/docs/RobotAssembly.md");
+        loadMarkdown("md3", "pogobot/docs/IR-Remote.md");
+        </script>
 
         <div id="file4"
              style="display:none; width:100%; height:auto; overflow:visible;"
