@@ -69,18 +69,27 @@
             const res = await fetch(filePath);
             let md = await res.text();
 
-            const base = "https://github.com/nekonaute/pogobot/tree/doc_refresh_0526/docs/";
+            const base = "/pogobot/docs/";
 
-            // Rewrite HTML <img src="...">
-            md = md.replace(
-                /<img\s+([^>]*?)src=["'](?!https?:\/\/)(.*?)["']/g,
-                (match, attrs, src) => {
-                return `<img ${attrs}src="${base}${src}"`;
+            const html = marked.parse(md);
+
+            const container = document.createElement("div");
+            container.innerHTML = html;
+
+            container.querySelectorAll("img").forEach(img => {
+                const src = img.getAttribute("src");
+
+                if (src && !src.startsWith("http") && !src.startsWith("/")) {
+                img.setAttribute("src", base + src);
                 }
-            );
 
-            document.getElementById(targetId).innerHTML =
-                marked.parse(md);
+                // also fix ../ paths
+                if (src && src.startsWith("../")) {
+                img.setAttribute("src", base + src.replace(/^\.\.\//, ""));
+                }
+            });
+
+            document.getElementById(targetId).innerHTML = container.innerHTML;
             }
 
         // load all docs
