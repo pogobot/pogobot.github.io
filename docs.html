@@ -50,31 +50,19 @@
         </div>
 
 
-        <div id="file1"
-             style="display:block; width:100%; height:auto; overflow:visible;"
-             markdown="1">
-
-            <embed
-                src="pogobot/docs/SoftwareUserGuide.md"
-                style="display:block; width:100%; min-height:100vh; border:none;">
+        <div id="file1" style="display:block;">
+            {% capture md1 %}{% include_relative pogobot/docs/SoftwareUserGuide.md %}{% endcapture %}
+            {{ md1 | markdownify }}
         </div>
 
-        <div id="file2"
-             style="display:none; width:100%; height:auto; overflow:visible;"
-             markdown="1">
-
-            <embed
-                src="pogobot/docs/RobotAssembly.md"
-                style="display:block; width:100%; min-height:100vh; border:none;">
+        <div id="file2" style="display:none;">
+            {% capture md2 %}{% include_relative pogobot/docs/RobotAssembly.md %}{% endcapture %}
+            {{ md2 | markdownify }}
         </div>
 
-        <div id="file3"
-             style="display:none; width:100%; height:auto; overflow:visible;"
-             markdown="1">
-
-            <embed
-                src="pogobot/docs/IR-Remote.md"
-                style="display:block; width:100%; min-height:100vh; border:none;">
+        <div id="file3" style="display:none;">
+            {% capture md3 %}{% include_relative pogobot/docs/IR-Remote.md %}{% endcapture %}
+            {{ md3 | markdownify }}
         </div>
 
         <div id="file4"
