@@ -1,0 +1,4 @@
+[submodule "pogobot"]
+	path = pogobot
+	url = https://github.com/nekonaute/pogobot.git
+	branch = doc_refresh_0526

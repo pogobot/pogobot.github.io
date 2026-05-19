@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Pogobot - a useful little robot</title>
+    <meta name="description" content="Pogobot - a low-cost robot for swarm robotics."/>
+
+    <link href="https://fonts.googleapis.com/css?family=K2D:300,400,500,700,800" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/custom.css">
+</head>
+
+<body>
+
+<section class="bg-gradient pt-5 pb-6" style="height:auto; overflow:visible;">
+    <div class="container" style="height:auto; overflow:visible;">
+
+        <!-- NAVBAR -->
+        <div class="navbar navbar-default navbar-fixed-top" style="margin-bottom: 5vh;">
+            <div class="col-12 d-flex flex-row align-items-center justify-content-between">
+
+                <a class="heading-brand text-success" href="index.html">
+                    Pogobot project
+                </a>
+
+                <div class="col-md-8 d-flex flex-row align-items-center justify-content-end">
+
+                    <a class="nav-btn" href="#" onclick="showFile('file1'); return false;">
+                        Software User Guide
+                    </a>
+
+                    <a class="nav-btn" href="#" onclick="showFile('file2'); return false;">
+                        Robot Assembly
+                    </a>
+
+                    <a class="nav-btn" href="#" onclick="showFile('file3'); return false;">
+                        IR Remote Control
+                    </a>
+
+                    <a class="nav-btn" href="#" onclick="showFile('file4'); return false;">
+                        Software API
+                    </a>
+
+                </div>
+            </div>
+        </div>
+
+
+        <div id="file1"
+             style="display:block; width:100%; height:auto; overflow:visible;">
+
+            <embed
+                src="pogobot/docs/SoftwareUserGuide.md"
+                style="display:block; width:100%; min-height:100vh; border:none;">
+        </div>
+
+        <div id="file2"
+             style="display:none; width:100%; height:auto; overflow:visible;">
+
+            <embed
+                src="pogobot/docs/RobotAssembly.md"
+                style="display:block; width:100%; min-height:100vh; border:none;">
+        </div>
+
+        <div id="file3"
+             style="display:none; width:100%; height:auto; overflow:visible;">
+
+            <embed
+                src="pogobot/docs/IR-Remote.md"
+                style="display:block; width:100%; min-height:100vh; border:none;">
+        </div>
+
+        <div id="file4"
+             style="display:none; width:100%; height:auto; overflow:visible;overflow-x:auto;">
+
+            <embed
+                src="pogobot/Software/docs/doxygen/html/pogobot_8h.html"
+                style="display:block; width:100%; min-height:100vh; border:none;">
+        </div>
+
+    </div>
+</section>
+
+<footer class="py-5 bg-light">
+    <div class="container">
+        <div class="row my-2">
+            <div class="col-md-4 mx-auto text-muted text-center small-xl">
+                &copy; 2026 ISIR - All Rights Reserved
+            </div>
+        </div>
+
+    </div>
+</footer>
+
+<script>
+function showFile(fileId)
+{
+    document.getElementById('file1').style.display = 'none';
+    document.getElementById('file2').style.display = 'none';
+    document.getElementById('file3').style.display = 'none';
+
+    document.getElementById(fileId).style.display = 'block';
+}
+</script>
+
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.7.3/feather.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+<script src="js/scripts.js"></script>
+
+</body>
+</html>
