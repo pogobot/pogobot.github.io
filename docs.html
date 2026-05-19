@@ -69,18 +69,19 @@
             const res = await fetch(filePath);
             let md = await res.text();
 
-            // derive base folder from file path
             const base = "https://github.com/nekonaute/pogobot/tree/doc_refresh_0526/docs/";
 
-            // rewrite relative image paths
-            md = md.replace(/!\[(.*?)\]\((?!https?:\/\/)(.*?)\)/g,
-                (match, alt, src) => {
-                return `![${alt}](${base}${src})`;
-                });
+            // Rewrite HTML <img src="...">
+            md = md.replace(
+                /<img\s+([^>]*?)src=["'](?!https?:\/\/)(.*?)["']/g,
+                (match, attrs, src) => {
+                return `<img ${attrs}src="${base}${src}"`;
+                }
+            );
 
             document.getElementById(targetId).innerHTML =
                 marked.parse(md);
-        }
+            }
 
         // load all docs
         loadMarkdown("md1", "pogobot/docs/SoftwareUserGuide.md");
