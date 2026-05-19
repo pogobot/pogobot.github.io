@@ -70,7 +70,7 @@
             let md = await res.text();
 
             // derive base folder from file path
-            const base = filePath.substring(0, filePath.lastIndexOf("/") + 1);
+            const base = "https://github.com/nekonaute/pogobot/tree/doc_refresh_0526/docs/";
 
             // rewrite relative image paths
             md = md.replace(/!\[(.*?)\]\((?!https?:\/\/)(.*?)\)/g,
